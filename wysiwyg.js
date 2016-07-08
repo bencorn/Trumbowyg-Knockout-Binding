@@ -16,5 +16,12 @@ ko.bindingHandlers.wysivalue = {
                 valueAccessor()($(element).trumbowyg('html'));               
             };
         });
+        
+        // Captures any style changes made.
+        var updates = $(element).focusout(function(){
+            if (ko.isWritableObservable(valueAccessor())){
+                valueAccessor()($(element).trumbowyg('html'));               
+            };
+        });
     }
 };
